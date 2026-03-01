@@ -31,12 +31,7 @@ $ventas=$ctrl->listar();
     <title>Ventas - Inventario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        .bg-teal{background-color:#20c997!important}
-        .btn-teal{background-color:#20c997;border-color:#20c997;color:#fff}
-        .btn-teal:hover{background-color:#1aa179;border-color:#1aa179;color:#fff}
-        .text-teal{color:#20c997!important}
-    </style>
+    <link href="assets/styles.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-teal">
