@@ -1,0 +1,32 @@
+/* Estilos personalizados del sistema */
+.bg-teal{background-color:#20c997!important}
+.btn-teal{background-color:#20c997;border-color:#20c997;color:#fff}
+.btn-teal:hover{background-color:#1aa179;border-color:#1aa179;color:#fff}
+.text-teal{color:#20c997!important}
+.border-teal{border-color:#20c997!important}
+
+.card-hover:hover{
+    transform:translateY(-5px);
+    transition:all 0.3s ease;
+    box-shadow:0 0.5rem 1rem rgba(0,0,0,0.15)!important;
+}
+
+.icon-large{font-size:3rem}
+
+.table-hover tbody tr:hover{
+    background-color:rgba(32,201,151,0.1);
+}
+
+.navbar-brand i{
+    margin-right:0.5rem;
+}
+
+.badge-stock-low{background-color:#dc3545}
+.badge-stock-medium{background-color:#ffc107;color:#000}
+.badge-stock-high{background-color:#198754}
+
+footer{
+    position:relative;
+    bottom:0;
+    width:100%;
+}
