@@ -1,5 +1,11 @@
 <?php
 require_once __DIR__.'/../config/database.php';
+
+// Obtener estadísticas
+$totalProductos=$conexion->query("SELECT COUNT(*) as total FROM productos")->fetch_assoc()['total'];
+$totalVentas=$conexion->query("SELECT COUNT(*) as total FROM ventas")->fetch_assoc()['total'];
+$ingresoTotal=$conexion->query("SELECT COALESCE(SUM(total),0) as total FROM ventas")->fetch_assoc()['total'];
+$stockBajo=$conexion->query("SELECT COUNT(*) as total FROM productos WHERE stock<=5")->fetch_assoc()['total'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -9,13 +15,7 @@ require_once __DIR__.'/../config/database.php';
     <title>Sistema de Inventario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        .bg-teal{background-color:#20c997!important}
-        .btn-teal{background-color:#20c997;border-color:#20c997;color:#fff}
-        .btn-teal:hover{background-color:#1aa179;border-color:#1aa179;color:#fff}
-        .card-hover:hover{transform:translateY(-5px);transition:0.3s}
-        .icon-large{font-size:3rem}
-    </style>
+    <link href="assets/styles.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-teal">
@@ -34,6 +34,46 @@ require_once __DIR__.'/../config/database.php';
         <div class="text-center mb-5">
             <h1 class="display-5 fw-bold text-teal">Sistema de Inventario y Ventas</h1>
             <p class="lead text-muted">Gestiona tus productos y registra tus ventas de manera sencilla</p>
+        </div>
+
+        <!-- Dashboard de estadísticas -->
+        <div class="row g-3 mb-5">
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="bi bi-box-seam text-teal" style="font-size:2rem"></i>
+                        <h3 class="mt-2"><?=$totalProductos?></h3>
+                        <small class="text-muted">Productos</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="bi bi-cart-check text-teal" style="font-size:2rem"></i>
+                        <h3 class="mt-2"><?=$totalVentas?></h3>
+                        <small class="text-muted">Ventas</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="bi bi-currency-dollar text-teal" style="font-size:2rem"></i>
+                        <h3 class="mt-2">$<?=number_format($ingresoTotal,2)?></h3>
+                        <small class="text-muted">Ingresos</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body">
+                        <i class="bi bi-exclamation-triangle text-warning" style="font-size:2rem"></i>
+                        <h3 class="mt-2"><?=$stockBajo?></h3>
+                        <small class="text-muted">Stock Bajo</small>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row g-4 justify-content-center">
