@@ -65,6 +65,18 @@ mysql -u root -p < database/inventario.sql
 - Control de stock automático
 - Historial de ventas
 
+## Validaciones
+
+### Productos
+- Nombre obligatorio (mínimo 2 caracteres)
+- Precio debe ser mayor a cero
+- Stock no puede ser negativo
+
+### Ventas
+- Producto requerido
+- Cantidad mayor a cero
+- Validación de stock disponible
+
 ## Capturas
 
 ### Inicio
